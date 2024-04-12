@@ -4,6 +4,10 @@
   </head>
 
   <body>
-    <p>square root results</p>
+    <h3>Square Root Results</h3>
+    <p>Number:</p>
+    <p><%=@num%></p>
+    <p>Square Root Results:</p>
+    <p><%=@num_sqrt%></p>
   </body>
 </html>

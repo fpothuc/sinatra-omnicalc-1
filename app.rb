@@ -10,6 +10,9 @@ get("/square/new") do
 end
 
 get("/square/results") do
+  @num = params.fetch("square").to_f
+  @num_sqr = @num ** 2
+
   erb(:square_results)
 end
 
@@ -18,6 +21,9 @@ get("/square_root/new") do
 end
 
 get("/square_root/results") do
+  @num = params.fetch("square_root").to_f
+  @num_sqrt = @num ** 0.5
+  
   erb(:square_root_results)
 end
 
