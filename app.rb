@@ -32,6 +32,12 @@ get("/payment/new") do
 end
 
 get("/payment/results") do
+  @apr = params.fetch("").to_f
+  @years = params.fetch("").to_f
+  @principle = params.fetch("").to_f
+
+  @periods = @years * 12
+  @monthly_payment = (@apr * @principle) / ((1-(1 + @apr)) ** (-1 * @periods))
 
   erb(:payment_results)
 end
@@ -44,6 +50,6 @@ get("/random/results") do
   @min = params.fetch("rand_min").to_f
   @max = params.fetch("rand_max").to_f
   @rand_num = rand(@min..@max)
-  
+
   erb(:random_results)
 end
