@@ -6,12 +6,12 @@
   <body>
     <h3>Monthly Payment Results</h3>
     <p>APR:</p>
-    <p><%=@apr%></p>
+    <p><%=@apr.to_fs(:percentage, {:precision => 4})%></p>
     <p>Years :</p>
     <p><%=@years%></p>
-    <p>Principle :</p>
-    <p><%=@principle%></p>
+    <p>Principal :</p>
+    <p><%=@principal.to_fs(:currency)%></p>
     <p>Monthly Payment:</p>
-    <p><%=@monthly_payment%></p>
+    <p><%=@monthly_dollars%></p>
   </body>
 </html>

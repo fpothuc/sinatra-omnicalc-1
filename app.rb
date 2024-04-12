@@ -34,10 +34,15 @@ end
 get("/payment/results") do
   @apr = params.fetch("apr").to_f
   @years = params.fetch("years").to_f
-  @principle = params.fetch("principle").to_f
+  @principal = params.fetch("principal").to_f
 
+  @monthly_pr = @apr / 1200
   @periods = @years * 12
-  @monthly_payment = (@apr * @principle) / ((1-(1 + @apr)) ** (-1 * @periods))
+  @numerator = @monthly_pr * @principal
+  @denominator = 1 - ((1 + @monthly_pr) ** (-1 * @periods))
+
+  @monthly_payment = @numerator / @denominator
+  @monthly_dollars = @monthly_payment.to_fs(:currency)
 
   erb(:payment_results)
 end
